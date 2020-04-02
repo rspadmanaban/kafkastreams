@@ -4,11 +4,7 @@ import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
-import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.KStream;
-import org.apache.kafka.streams.processor.StateStore;
-import org.apache.kafka.streams.state.KeyValueStore;
-import org.apache.kafka.streams.state.Stores;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -37,7 +33,6 @@ public class StreamsApplication {
 		textLines.foreach((key,value) ->{
 			System.out.println("key: "+key +" Values: "+value);
 		});
-
 		KafkaStreams kafkaStreams = new KafkaStreams(builder.build(),props);
 		kafkaStreams.start();
 
